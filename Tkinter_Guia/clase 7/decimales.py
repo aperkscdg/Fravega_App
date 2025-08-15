@@ -5,7 +5,7 @@ ventana = tk.Tk()
 
 decimal = tk.DoubleVar(value=0.0)
 
-control_deslizante = tk.Scale(ventana, from_=0 , to=10.0 ,resolution=1, variable=decimal,orient=tk.HORIZONTAL) #crea un control deslizante que va de 0 a 10 con una resolución de 0.1
+control_deslizante = tk.Scale(ventana, from_=0 , to=10.0 ,resolution=0.1, variable=decimal,orient=tk.HORIZONTAL) #crea un control deslizante que va de 0 a 10 con una resolución de 0.1
 
 control_deslizante.pack()  # Empaqueta el control deslizante en la ventana
 

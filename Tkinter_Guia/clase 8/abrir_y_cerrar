@@ -12,7 +12,7 @@ def abrir_ventana_topLevel():
     label = Label(ventana_topLevel, text="Ventana TopLevel")
     label.pack(pady=10)
     
-    # Botón para cerrar esta ventana, directamente dentro de ella
+    # dentro de la ventana , se le pone esto , el .destroy para destruir esa ventana
     boton_cerrar = Button(ventana_topLevel, text="Cerrar", command=ventana_topLevel.destroy)
     boton_cerrar.pack(pady=10)
 

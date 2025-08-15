@@ -26,7 +26,8 @@ ventana.configure(bg="aquamarine")
 #True si se puede , false si no
 
 #transparencia de la ventana
-ventana.attributes('-alpha',0.3)
+#mientras mas se acerca a 0 , mas transparencia tiene
+ventana.attributes('-alpha',0.5)
 
 
 ventana.mainloop()

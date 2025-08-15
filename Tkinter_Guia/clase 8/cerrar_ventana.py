@@ -15,7 +15,8 @@ label.pack()
 def cerrar_ventana_topLevel(ventana_topLevel):
     ventana_topLevel.destroy()
 #aqui creamos el boton y se le asigna el texto y a que funcion va a llamar
-    boton_cerrar = Button(ventana, text="Cerrar ventana top level", command=cerrar_ventana_topLevel(ventana_topLevel))
-    boton_cerrar.pack()
+#el boton solo se va a ejecutar cuando lo presiones , para que se pueda hacer se untiliza el lambda:
+boton_cerrar = Button(ventana, text="Cerrar ventana top level", command=lambda: cerrar_ventana_topLevel(ventana_topLevel))
+boton_cerrar.pack()
 
 ventana.mainloop()
