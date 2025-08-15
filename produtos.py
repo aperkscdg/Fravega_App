@@ -45,13 +45,23 @@ class Producto: # Clase Producto que representa un producto con sus atributos y 
         elif not nombre.isalpha():
             messagebox.showerror("Error de Formato", "El nombre del producto debe contener solo letras.")
         else:
+            for i in range(box.size()):
+                datos = box.get(i).split(" - ")
+                if datos[0].lower() == nombre.lower():
+                    #actualizar cantidad en stock
+                    nueva_cantidad = int(datos[3]) + int(cantidad_stock)
+                    box.delete(i)
+                    box.insert(i, f"{nombre} - {costo_compra} - {costo_venta} - {nueva_cantidad}")
+                    break
             if nombre and costo_compra and costo_venta and cantidad_stock:
                 producto = Producto(nombre, costo_compra, costo_venta, cantidad_stock)
                 box.insert(tk.END, str(producto))
                 for entrada in entradas:
                     entrada.delete(0, tk.END)
                 entradas[0].focus()
-        
+            cantidad_stock = int(cantidad_stock)
+
+
 boton.config(command=Producto.agregar_producto)
 
 
