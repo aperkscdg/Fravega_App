@@ -46,8 +46,7 @@ class Producto: # Clase Producto que representa un producto con sus atributos y 
                 box.insert(tk.END, str(producto))
                 for entrada in entradas:
                     entrada.delete(0, tk.END)
-                entradas[0].focus()
-
+                entradas[0].focus()     
 
 boton.config(command=Producto.agregar_producto)
 
