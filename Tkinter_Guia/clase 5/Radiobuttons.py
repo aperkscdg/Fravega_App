@@ -7,8 +7,6 @@ variabledecontrol = tk.IntVar()
 
 i=0
 
-
-
 def opcion_seleccionada():
     variable = variabledecontrol.get() # el get método obtiene el valor de la variable de control
     variable+=1 #hice esto para que el valor de la variable sea 1,2,3,4,5 en vez de 0,1,2,3,4
