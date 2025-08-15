@@ -3,7 +3,7 @@ import tkinter as tk
 ventana = tk.Tk()
 
 
-entero = tk.IntVar(value=0)  # Esto establece el valor inicial de la variable IntVar
+entero = tk.IntVar(value=30)  # Esto establece el valor inicial de la variable IntVar
 
 print("ESTA MAL", entero)  # Esto es malo, no imprime el valor de la variable
 

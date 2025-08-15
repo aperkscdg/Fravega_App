@@ -1,0 +1,22 @@
+from tkinter import *
+
+ventana = Tk()
+ventana.title("Ventana Principal")
+ventana.geometry("600x400")
+
+def abrir_ventana_topLevel():
+    ventana_topLevel = Toplevel(ventana)
+    ventana_topLevel.title("Ventana TopLevel")
+    ventana_topLevel.geometry("300x200+50+50")
+    
+    label = Label(ventana_topLevel, text="Ventana TopLevel")
+    label.pack(pady=10)
+    
+    # Botón para cerrar esta ventana, directamente dentro de ella
+    boton_cerrar = Button(ventana_topLevel, text="Cerrar", command=ventana_topLevel.destroy)
+    boton_cerrar.pack(pady=10)
+
+boton = Button(ventana, text="Abrir Ventana TopLevel", command=abrir_ventana_topLevel)
+boton.pack(pady=20)
+
+ventana.mainloop()
