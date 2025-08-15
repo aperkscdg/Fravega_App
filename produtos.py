@@ -1,5 +1,5 @@
 import tkinter as tk
-from CTkMessagebox import CTkMessagebox
+from tkinter import messagebox
 
 ventana = tk.Tk()
 ventana.geometry("1280x720")
@@ -22,12 +22,15 @@ boton.grid(row=4, column=1, padx=80, pady=5)
 box = tk.Listbox(ventana, width=100, height=20)
 box.grid(row=6, column=1, columnspan=2, padx=80, pady=5)
 
+
+
 class Producto: # Clase Producto que representa un producto con sus atributos y métodos
-    def __init__(self, nombre, costo_compra, costo_venta, cantidad_stock): # Inicializa los atributos del producto
-        self.nombre = nombre #
+    def __init__(self, nombre="", costo_compra=0, costo_venta=0, cantidad_stock=0): # Inicializa los atributos del producto
+        self.nombre = nombre 
         self.costo_compra = costo_compra
         self.costo_venta = costo_venta
         self.cantidad_stock = cantidad_stock
+
     
     def __str__(self):
         return f"{self.nombre} - {self.costo_compra} - {self.costo_venta} - {self.cantidad_stock}"  
@@ -36,17 +39,18 @@ class Producto: # Clase Producto que representa un producto con sus atributos y 
         nombre = entradas[0].get() # Obtiene el nombre del producto
         costo_compra = entradas[1].get() # Obtiene el costo de compra
         costo_venta = entradas[2].get()  # Obtiene el costo de venta
-        cantidad_stock = entradas[3].get() # Obtiene la cantidad en stock
-        
-        if nombre and costo_compra and costo_venta and cantidad_stock: # Verifica que todos los campos estén completos
-            producto = Producto(nombre, costo_compra, costo_venta, cantidad_stock) # Crea una instancia de Producto para que? se agregue a la lista
-            box.insert(tk.END, str(producto)) # Agrega el producto a la lista
-            # Limpia las entradas para que el usuario pueda agregar otro producto
-            for entrada in entradas: # Limpia cada entrada
-                entrada.delete(0, tk.END) # Limpia el contenido de la entrada
-            entradas[0].focus() # Enfoca la primera entrada para facilitar la adición de nuevos productos por
-        else:                           
-            CTkMessagebox(title="Error", message="Por favor, complete todos los campos.", icon="cancel", option_1="Aceptar")
+        cantidad_stock = entradas[3].get() # Obtiene la cantidad en stock   
+        if not costo_compra.isdigit() or not costo_venta.isdigit() or not cantidad_stock.isdigit():
+            messagebox.showerror("Error de Formato", "Los campos de costo y cantidad deben ser números enteros.")   
+        elif not nombre.isalpha():
+            messagebox.showerror("Error de Formato", "El nombre del producto debe contener solo letras.")
+        else:
+            if nombre and costo_compra and costo_venta and cantidad_stock:
+                producto = Producto(nombre, costo_compra, costo_venta, cantidad_stock)
+                box.insert(tk.END, str(producto))
+                for entrada in entradas:
+                    entrada.delete(0, tk.END)
+                entradas[0].focus()
         
 boton.config(command=Producto.agregar_producto)
 
