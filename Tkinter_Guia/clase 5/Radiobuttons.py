@@ -3,7 +3,7 @@ import tkinter as tk
 ventana = tk.Tk()
 
 
-variabledecontrol = tk.IntVar()
+variabledecontrol = tk.IntVar() 
 
 i=0
 
