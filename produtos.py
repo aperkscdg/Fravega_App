@@ -22,16 +22,12 @@ boton.grid(row=4, column=1, padx=80, pady=5)
 box = tk.Listbox(ventana, width=100, height=20)
 box.grid(row=6, column=1, columnspan=2, padx=80, pady=5)
 
-
-
 class Producto: # Clase Producto que representa un producto con sus atributos y métodos
     def __init__(self, nombre="", costo_compra=0, costo_venta=0, cantidad_stock=0): # Inicializa los atributos del producto
         self.nombre = nombre 
         self.costo_compra = costo_compra
         self.costo_venta = costo_venta
         self.cantidad_stock = cantidad_stock
-
-    
     def __str__(self):
         return f"{self.nombre} - {self.costo_compra} - {self.costo_venta} - {self.cantidad_stock}"  
     
@@ -45,21 +41,12 @@ class Producto: # Clase Producto que representa un producto con sus atributos y 
         elif not nombre.isalpha():
             messagebox.showerror("Error de Formato", "El nombre del producto debe contener solo letras.")
         else:
-            for i in range(box.size()):
-                datos = box.get(i).split(" - ")
-                if datos[0].lower() == nombre.lower():
-                    #actualizar cantidad en stock
-                    nueva_cantidad = int(datos[3]) + int(cantidad_stock)
-                    box.delete(i)
-                    box.insert(i, f"{nombre} - {costo_compra} - {costo_venta} - {nueva_cantidad}")
-                    break
             if nombre and costo_compra and costo_venta and cantidad_stock:
                 producto = Producto(nombre, costo_compra, costo_venta, cantidad_stock)
                 box.insert(tk.END, str(producto))
                 for entrada in entradas:
                     entrada.delete(0, tk.END)
                 entradas[0].focus()
-            cantidad_stock = int(cantidad_stock)
 
 
 boton.config(command=Producto.agregar_producto)
