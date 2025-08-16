@@ -22,7 +22,7 @@ def opcion_seleccionada():
     elif variable == 5:
         ventana.configure(bg="purple")
 
-opciones = [tk.Radiobutton(ventana, text="opciones "+ str(i+1) + "", variable=variabledecontrol, value=i , ) for i in range(0,5)]
+opciones = [tk.Radiobutton(ventana, text="opciones "+ str(i+1), variable=variabledecontrol, value=i , ) for i in range(0,5)]
 for opcion in opciones:
     opcion.pack(anchor=tk.W) #este codigo agrega los radiobuttons a la ventana con un bucle 
 

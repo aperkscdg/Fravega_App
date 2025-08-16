@@ -35,8 +35,10 @@ class Producto: # Clase Producto que representa un producto con sus atributos y 
         nombre = entradas[0].get() # Obtiene el nombre del producto
         costo_compra = entradas[1].get() # Obtiene el costo de compra
         costo_venta = entradas[2].get()  # Obtiene el costo de venta
-        cantidad_stock = entradas[3].get() # Obtiene la cantidad en stock   
-        if not costo_compra.isdigit() or not costo_venta.isdigit() or not cantidad_stock.isdigit():
+        cantidad_stock = entradas[3].get() # Obtiene la cantidad en stock
+        if not nombre or not costo_compra or not costo_venta or not cantidad_stock:
+            messagebox.showerror("Falta Informacion", "Todas las Opciones tiene que estar completas")
+        elif not costo_compra.isdigit() or not costo_venta.isdigit() or not cantidad_stock.isdigit():
             messagebox.showerror("Error de Formato", "Los campos de costo y cantidad deben ser números enteros.")   
         elif not nombre.isalpha():
             messagebox.showerror("Error de Formato", "El nombre del producto debe contener solo letras.")

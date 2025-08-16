@@ -34,6 +34,12 @@ combobox["values"] = elementos
 #la mejor forma es la primera forma es mas automatizado que la segunda que tenemos que repetir lineas de codigo
 #con el primer metodo podemos hacer una funcion y que reciba los parametro de cual indice quiere modificar
 
+def on_seleccionar(event):
+    valor_seleccionado = combobox.get()
+    print(f"Seleccionado: {valor_seleccionado}")
+
+combobox.bind("<<ComboboxSelected>>", on_seleccionar)
+
 
 
 
