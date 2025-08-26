@@ -37,17 +37,40 @@ def crear_header(ventana):
 
     usuario_red = usuario_no.resize((ancho_usuario, alto_header), Image.LANCZOS)
 
-    # Convertir a PhotoImage para Tkinter
+
     usuario = ImageTk.PhotoImage(usuario_red)
 
   
-    # Crear botón con la imagen
+  
     boton_usuario = tk.Button(header, image=usuario,bg="DarkOrchid1",activebackground="white",bd=0)
     boton_usuario.image = usuario
     boton_usuario.pack(side="right", padx=10)
+    
 
 
 
+
+def inventario(header):
+    
+    frame_inventario = tk.Frame(ventana)
+    frame_inventario.pack()
+
+    lista = tk.Listbox(frame_inventario)
+    lista.insert(1, "Televisor")
+    lista.insert(2, "Celular")
+    lista.insert(3, "Notebook")
+
+    def toggle():
+        if lista.winfo_ismapped():
+            lista.pack_forget()
+        else:
+            lista.pack(side="top", pady=5)
+
+    boton = tk.Button(frame_inventario, text="Inventario",
+                      command=toggle, bg="purple", fg="white")
+    boton.pack(side="top", pady=2)
 
 crear_header(ventana)
+inventario(ventana)
+
 ventana.mainloop()
