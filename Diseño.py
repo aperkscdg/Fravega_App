@@ -53,12 +53,12 @@ def crear_header(ventana):
 def inventario(ventana):
     
     frame_inventario = tk.Frame(ventana)
-    frame_inventario.place(x=0,y=74)  # esquina superior derecha
+    frame_inventario.place(x=50,y=74)
 
-    lista = tk.Listbox(frame_inventario,bd=0)
-    lista.insert(1, "Televisor")
-    lista.insert(2, "Celular")
-    lista.insert(3, "Notebook")
+    lista = tk.Listbox(frame_inventario,width=60,height=30,bd=0,font=("Impacto",12))
+    lista.insert(1, "niko")
+    lista.insert(2, "Cuphead")
+    lista.insert(3, "Gabriel")
 
     def toggle():
         if lista.winfo_ismapped():
@@ -68,6 +68,8 @@ def inventario(ventana):
 
     boton = tk.Button(frame_inventario, text="Inventario",
                       command=toggle, bg="DarkOrchid1", fg="white",font=("Impacto",12),bd=0)
+    
+    
     boton.pack()
 
 crear_header(ventana)
