@@ -1,4 +1,4 @@
-class productos:
+class productos():
     def __init__(self,codigo_producto=0,nombre="",fabricante="",categoria="",desc_producto="",garantia_producto="",resenias=""):
         self.codigo_producto=codigo_producto
         self.nombre=nombre
