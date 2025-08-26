@@ -31,7 +31,7 @@ def crear_header(ventana):
     usuario_no = Image.open("Imagenes/Usuario.png").convert("RGBA")
 
 
-    alto_header = 50  
+
     ancho_usuario = int(usuario_no.width * (alto_header / usuario_no.height))
 
 
@@ -50,12 +50,12 @@ def crear_header(ventana):
 
 
 
-def inventario(header):
+def inventario(ventana):
     
     frame_inventario = tk.Frame(ventana)
-    frame_inventario.pack()
+    frame_inventario.place(x=0,y=74)  # esquina superior derecha
 
-    lista = tk.Listbox(frame_inventario)
+    lista = tk.Listbox(frame_inventario,bd=0)
     lista.insert(1, "Televisor")
     lista.insert(2, "Celular")
     lista.insert(3, "Notebook")
@@ -64,11 +64,11 @@ def inventario(header):
         if lista.winfo_ismapped():
             lista.pack_forget()
         else:
-            lista.pack(side="top", pady=5)
+            lista.pack()
 
     boton = tk.Button(frame_inventario, text="Inventario",
-                      command=toggle, bg="purple", fg="white")
-    boton.pack(side="top", pady=2)
+                      command=toggle, bg="DarkOrchid1", fg="white",font=("Impacto",12),bd=0)
+    boton.pack()
 
 crear_header(ventana)
 inventario(ventana)
