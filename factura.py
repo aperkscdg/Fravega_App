@@ -7,3 +7,4 @@ class productos:
         self.desc_producto=desc_producto
         self.garantia_producto=garantia_producto
         self.resenias=resenias
+
