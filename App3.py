@@ -12,6 +12,7 @@ ventana.title("Fravega")
 ancho = ventana.winfo_screenwidth()
 alto = ventana.winfo_screenheight()
 ventana.geometry(f"{ancho}x{alto}+0+0")
+ventana.iconbitmap("imagenes/fravega.ico")
 
 # Fondo
 label_fondo_no = Image.open("Imagenes/fra.png")
@@ -259,6 +260,7 @@ def inventario(ventana):
 
     lista.bind("<<ListboxSelect>>", seleccionar_producto)
 
+
 def login(ventana):
     class usuario:
         def __init__(self,nombre="",contraseña="",correo="",dni=0):
@@ -323,10 +325,6 @@ def login(ventana):
     # Botón Ingresar
     boton_ingresar = tk.Button(frame, text="Ingresar",command=usuario.validar_datos)
     boton_ingresar.grid(row=2, column=0, columnspan=2, pady=15)
-
-def configuracion(ventana):
-    return "puto"
-
 
 login(ventana)
 ventana.mainloop()
