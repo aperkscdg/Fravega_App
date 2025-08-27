@@ -13,7 +13,6 @@ ancho = ventana.winfo_screenwidth()
 alto = ventana.winfo_screenheight()
 ventana.geometry(f"{ancho}x{alto}+0+0")
 
-# Fondo
 label_fondo_no = Image.open("Imagenes/fra.png")
 fondo_res = label_fondo_no.resize((1400, 800))
 label_fondo_si = ImageTk.PhotoImage(fondo_res)
@@ -62,16 +61,14 @@ def inventario(ventana):
     frame_pedido = tk.Frame(ventana, bg="orchid2")
     frame_pedido.place(x=1050, y=74)
 
-    # ===== Lista de productos (antes estaba abajo, ahora arriba) =====
-    lista = tk.Listbox(frame_inventario, width=60, height=10, bd=0, font=("Impacto", 12))
-    lista.pack(pady=10)
+    lista = tk.Listbox(frame_inventario, width=40, height=20, bd=0, font=("Impacto", 16),
+                       highlightthickness=5, highlightbackground="orchid2")
 
-    # ===== Botón PEDIDOS para mostrar carrito =====
     def toggle_pedidos():
-        if carrito.winfo_ismapped():
-            carrito.pack_forget()
+        if lista.winfo_ismapped():
+            lista.pack_forget()
         else:
-            carrito.pack(pady=10)
+            lista.pack(side="bottom", fill="x")
 
     pedido_no = Image.open("Imagenes/ppedidos.png")
     pedido_res = pedido_no.resize((200, 75))
@@ -81,16 +78,13 @@ def inventario(ventana):
     boton.image = pedidos_si
     boton.pack()
 
-    # ===== Carrito (antes estaba arriba, ahora abajo) =====
-    carrito = tk.Listbox(frame_inventario, width=40, height=20, bd=0, font=("Impacto", 16),
-                         highlightthickness=5, highlightbackground="orchid2")
+    carrito = tk.Listbox(frame_inventario, width=60, height=10, bd=0, font=("Impacto", 12))
+    carrito.pack(pady=10)
 
-    # Botón Añadir Producto
-    boton_agregar = tk.Button(frame_inventario, text="Añadir Producto", bg="purple", fg="white",
-                              font=("Impacto", 12), command=lambda: seleccionar_producto(None))
-    boton_agregar.pack(pady=5)
+    boton_stock = tk.Button(frame_inventario, text="", state="disabled", bg="green", fg="white")
+    boton_stock.pack()
 
-    # ===== FACTURA (con datos cliente y stock debajo) =====
+
     frame_cliente = tk.Frame(frame_pedido, bg="orchid2")
 
     tk.Label(frame_cliente, text="Nombre", bg="orchid2").pack()
@@ -116,10 +110,6 @@ def inventario(ventana):
     tk.Label(frame_cliente, text="Código Postal", bg="orchid2").pack()
     codigo_postal = tk.Entry(frame_cliente)
     codigo_postal.pack()
-
-    # Lista con estado de stock debajo de los datos cliente
-    lista_stock = tk.Listbox(frame_cliente, width=60, height=10, bd=0, font=("Impacto", 12))
-    lista_stock.pack(pady=10)
 
     def descargar_factura():
         variable_nombre = nombre_cliente.get()
@@ -226,10 +216,8 @@ def inventario(ventana):
 
     def refrescar_lista():
         lista.delete(0, tk.END)
-        lista_stock.delete(0, tk.END)
         for prod in lista_productos:
             lista.insert(tk.END, str(prod))
-            lista_stock.insert(tk.END, f"{prod.nombre},{prod.marca},${prod.precio_unitario},STOCK ACTUAL: {prod.stock},iva: 21")
 
     refrescar_lista()
 
@@ -237,8 +225,22 @@ def inventario(ventana):
         if lista.curselection():
             index = lista.curselection()[0]
             prod = lista_productos[index]
+            boton_stock.config(
+                text=f"Stock disponible: {prod.stock}  | Restar 1",
+                state="normal",
+                command=lambda: restar_stock(index)
+            )
+            boton_stock.pack(pady=5)
+
+    def restar_stock(index):
+        prod = lista_productos[index]
+        if prod.stock > 0:
+            prod.stock -= 1
             carrito.insert(tk.END, f"{prod.nombre} - ${prod.precio_unitario}")
             refrescar_lista()
+            boton_stock.config(text=f"Stock disponible: {prod.stock}  | Restar 1")
+        else:
+            boton_stock.config(text="Sin stock", state="disabled")
 
     lista.bind("<<ListboxSelect>>", seleccionar_producto)
 

@@ -2,7 +2,7 @@ import tkinter as tk
 
 ventana = tk.Tk()
 
-listbox=tk.Listbox(ventana,width=50,height=10,font=("Arial 12", 12 ), fg="Blue", bg="white")
+listbox=tk.Listbox(ventana,width=10,height=10,font=("Arial 12", 12 ), fg="Blue", bg="white")
 listbox.insert(tk.END, "Elemento 1")
 listbox.insert(tk.END, "Elemento 2" )
 
