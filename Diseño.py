@@ -74,9 +74,6 @@ def inventario(ventana):
 
 
     lista = tk.Listbox(frame_inventario,width=40,height=20,bd=0,font=("Impacto",16),highlightthickness=5,highlightbackground="orchid2")
-    lista.insert(1, "niko")
-    lista.insert(2, "Cuphead")
-    lista.insert(3, "Gabriel")
 
     def toggle():
         if lista.winfo_ismapped():
