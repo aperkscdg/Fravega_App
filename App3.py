@@ -273,20 +273,17 @@ def login(ventana):
             nombre_empleado = nombre_entry.get()
             contraseña_empleado = contraseña_entry.get()
             if not nombre_empleado or not contraseña_empleado:
-                messagebox.showerror("Falta Informacion", "Todas las Opciones tiene que estar completas")
+                messagebox.showerror("Falta Informacion", "Todas las Opciones tienen que estar completas")
             elif nombre_empleado.isdigit():
                 messagebox.showerror("No puedes poner numeros", "su nombre no puedo llevar numeros")
             else:
                 usuario_objeto = usuario(nombre_empleado, contraseña_empleado)
-                #messagebox.showinfo("Datos Guardados", f"Usuario creado:\n{usuario}")
-                logo.grid_forget()
-                frame.grid_forget()
-                etiqueta_nombre.grid_forget()
-                etiqueta_nombre.grid_forget()
-                nombre_entry.grid_forget()
-                contraseña_entry.grid_forget()
-                crear_header(ventana,nombre_empleado)
-                inventario(ventana)
+        
+            logo.destroy()
+            frame.destroy()
+        
+            crear_header(ventana,nombre_empleado)
+            inventario(ventana)
 
     # Configurar filas y columnas para centrar contenido
     ventana.grid_rowconfigure(0, weight=1)
@@ -328,8 +325,6 @@ def login(ventana):
     boton_ingresar.image=imagen_si
     boton_ingresar.grid(row=2, column=0, columnspan=2, pady=15)
 
-def configuracion(ventana):
-    return "puto"
 
 
 login(ventana)
