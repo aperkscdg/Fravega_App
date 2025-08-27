@@ -89,7 +89,7 @@ def inventario(ventana):
     pedido_res=pedido_no.resize((200,75))
     pedidos_si=ImageTk.PhotoImage(pedido_res)
     boton = tk.Button(frame_inventario, image=pedidos_si,
-                      command=toggle, bg="orchid2",border=0,activebackground="orchid2")
+                    command=toggle, bg="orchid2",border=0,activebackground="orchid2")
     boton.image=pedidos_si
     boton.pack()
     
