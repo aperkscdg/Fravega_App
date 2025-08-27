@@ -206,6 +206,13 @@ def inventario(ventana):
         elementos.append(Paragraph(f"<b>Total a Pagar: ${total_general:.2f}</b>", estilos["Heading2"]))
 
         pdf.build(elementos)
+        nombre_cliente.delete(0,tk.END)
+        apellido_cliente.delete(0,tk.END)
+        dni.delete(0,tk.END)
+        ciudad.delete(0,tk.END)
+        region.delete(0,tk.END)
+        codigo_postal.delete(0,tk.END)
+        carrito.delete(0,tk.END)
         messagebox.showinfo("Éxito", f"Factura generada correctamente: {nombre_archivo}")
 
     # ===== Toggle Factura =====
