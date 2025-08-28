@@ -285,12 +285,10 @@ def login(ventana):
                 messagebox.showerror("No puedes poner numeros", "su nombre no puedo llevar numeros")
             else:
                 usuario_objeto = usuario(nombre_empleado, contraseña_empleado)
-        
-            logo.destroy()
-            frame.destroy()
-        
-            crear_header(ventana,nombre_empleado)
-            inventario(ventana)
+                logo.destroy()
+                frame.destroy()
+                crear_header(ventana,nombre_empleado)
+                inventario(ventana)
 
     # Configurar filas y columnas para centrar contenido
     ventana.grid_rowconfigure(0, weight=1)
